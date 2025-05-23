@@ -325,6 +325,9 @@ document.addEventListener('DOMContentLoaded', function() {
         .item {
             margin-left: 10px; /* Agrega un margen izquierdo de 10 píxeles */
         }
+        .formulario{
+          margin-bottom: 9px;
+        }
         </style>
 
 
@@ -1801,7 +1804,354 @@ body {
 
 
 
+
+    <section class="contenedor-formulario">
+        <div class="imagen-formulario">
+            <img src="imagen_formulario.svg" alt="Trabajador de construcción"> 
+        </div>
+        <div class="bloque-formulario-general">
+            <h1>¿Tienes alguna pregunta para nosotros?</h1>
+            <form id="bloqueFormulario" action="" method="post">
+                <div class="datos-personales form-row"> <div class="nombres form-group"> <label for="nombre"></label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+                    </div>
+                    <div class="apellidos form-group"> <label for="apellido"></label>
+                        <input type="text" id="apellido" name="apellido" placeholder="Apellido" required>
+                    </div>
+                </div>
+                <div class="contato-formulario form-row"> <div class="correo form-group"> <label for="correo">Correo</label>
+                        <input type="email" id="correo" name="correo" placeholder="tuCorreoAquí@gmail.com" required>
+                    </div>
+                    <div class="telefono form-group"> <label for="numero">Número</label>
+                        <input type="tel" id="numero" name="numero" placeholder="+51 999 999 999" pattern="[0-9]{9}" title="Ingrese un número de teléfono válido de 9 dígitos" required>
+                    </div>
+                </div>
+                <div class="seleccion-asunto form-group"> <label for="asunto">Asunto</label>
+                    <div class="seleccion custom-select"> <select id="asunto" name="asunto" required>
+                            <option value="mantenimiento">Mantenimiento</option>
+                            <option value="consulta">Consulta</option>
+                            <option value="soporte">Soporte</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mensajes"> <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje" name="mensaje" placeholder="Buenos días..." rows="5"></textarea>
+                </div>
+                <div class="segundo-contacto form-group"> <label for="contacto_preferencia">Contacto de preferencia</label>
+                    <div class="seleccion custom-select"> <select id="contacto_preferencia" name="contacto_preferencia">
+                            <option value="telefono">Teléfono</option>
+                            <option value="email">Email</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="aceptar-politicas">
+                    <input type="checkbox" id="acepta_politicas" name="acepta_politicas" required>
+                    <label for="acepta_politicas">Acepta las políticas de privacidad</label>
+                </div>
+
+                <button type="submit" class="boton-enviar">Enviar</button>
+
+            </form>
+        </div>
+    </section>
+
+
+<style>
+
+
+/* --- Estilos Generales y Reseteo --- */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+/* --- Contenedor Principal del Formulario --- */
+.contenedor-formulario {
+    display: flex;
+    width: 100%; /* Ancho responsivo */
+    justify-content: center; /* Centra el contenido */
+    margin-bottom: 10vh;
+    padding: 0px 100px;
+    text-align: left; /* Alinea el texto a la izquierda */
+    background-image: url('fondo_formulario.png'); /* O 'tu_imagen_de_fondo.png' */
+    gap: 100px;
+}
+
+
+/* --- Sección de la Imagen --- */
+.imagen-formulario {
+    flex: 1; /* Ocupa el espacio restante */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Alinea la imagen en la parte inferior del contenedor */
+    position: relative; /* Para posicionar elementos internos si los hubiera */
+    padding-left: 20px; /* Espacio a la izquierda de la imagen */
+}
+
+.imagen-formulario img {
+    width: auto; /* Asegura que la imagen no se desborde */
+    height: 100%;
+    object-fit: contain; /* Asegura que la imagen se ajuste dentro del contenedor */
+}
+
+/* --- Sección del Formulario (lado derecho) --- */
+.bloque-formulario-general {
+    flex: 1.2; /* Ocupa un poco más de espacio que la imagen */
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #fff; /* Fondo blanco para el formulario */
+    margin-bottom: 50px;
+    margin-top: 50px;
+    border-radius: 30px;
+}
+
+.bloque-formulario-general h1 {
+    font-size: 2.2em; /* Tamaño del título */
+    color: #001E83; /* Color del título */
+    margin-bottom: 30px;
+    line-height: 1.2; /* Espaciado de línea para el título */
+    font-weight: 600; /* Semibold */
+}
+
+/* --- Estilos de la Forma (form) --- */
+#bloqueFormulario {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaciado entre grupos de campos */
+}
+
+/* --- Filas de Formulario (para campos en paralelo) --- */
+.form-row {
+    display: flex;
+    gap: 20px; /* Espaciado entre campos en la misma fila */
+    flex-wrap: wrap; /* Permite que los campos se envuelvan en pantallas pequeñas */
+}
+
+.form-group {
+    flex: 1; /* Hace que los grupos de formulario ocupen el espacio disponible */
+    display: flex;
+    flex-direction: column;
+    min-width: 200px; /* Ancho mínimo para cada campo en la fila */
+}
+
+
+/* --- Estilos de Labels --- */
+label {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 5px;
+    font-weight: 400; /* Regular */
+}
+
+/* --- Estilos de Inputs, Textareas y Selects --- */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea,
+select {
+    padding: 12px 15px; /* Más padding para los campos */
+    border: 1px solid #e0e0e0; /* Borde más suave */
+    border-radius: 8px; /* Bordes más redondeados */
+    font-size: 1em;
+    color: #333;
+    outline: none; /* Elimina el contorno al enfocar */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box; /* Asegura que padding y border se incluyan en el ancho/alto */
+    width: 100%;
+        border-color: #818181; /* Color de borde al enfocar */
+
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+textarea:focus,
+select:focus {
+    border-color: #FF9C33; /* Color de borde al enfocar */
+    box-shadow: 0 0 0 3px rgba(255, 156, 51, 0.2); /* Sombra suave al enfocar */
+}
+
+textarea {
+    resize: vertical; /* Permite redimensionar verticalmente */
+    min-height: 120px; /* Altura mínima para el campo de mensaje */
+}
+
+/* --- Estilos para Selects Personalizados (flecha) --- */
+.custom-select {
+    position: relative;
+    width: 100%;
+}
+
+.custom-select select {
+    -webkit-appearance: none; /* Elimina la flecha predeterminada en WebKit */
+    -moz-appearance: none;    /* Elimina la flecha predeterminada en Firefox */
+    appearance: none;         /* Elimina la flecha predeterminada */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23888888" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px center; /* Posición de la flecha personalizada */
+    background-size: 20px;
+    padding-right: 40px; /* Espacio para la flecha */
+}
+
+/* --- Estilos del Checkbox --- */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-top: 5px; /* Ajuste el margen superior */
+}
+
+.checkbox-group input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.checkbox-group input[type="checkbox"]:checked {
+    background-color: #FF9C33; /* Color de fondo cuando está marcado */
+    border-color: #FF9C33;
+}
+
+.checkbox-group input[type="checkbox"]:checked::after {
+    content: '\2713'; /* Símbolo de "tick" (✓) */
+    font-size: 14px;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.checkbox-group label {
+    margin-bottom: 0; /* Elimina el margen inferior para alinear */
+    font-size: 0.95em;
+    color: #333;
+    cursor: pointer;
+}
+
+/* --- Estilos del Botón Enviar --- */
+.boton-enviar {
+    background: linear-gradient(to right, #ff7101, #FF7D18, #FF9B34); /* Degradado de izquierda a derecha */
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15pt;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 20px;
+    width: 30%; /* Ocupa el ancho completo */
+    box-shadow: 0 5px 15px rgba(255, 156, 51, 0.3); /* Sombra para el botón */
+    border-radius: 50px;
+}
+
+.boton-enviar:hover {
+    background-color: #e68e2c; /* Color más oscuro al pasar el mouse */
+    box-shadow: 0 7px 20px rgba(255, 156, 51, 0.4);
+    transform:  scale(1.04); /* Efecto de agrandamiento al pasar el mouse */
+    transition: transform 0.3s ease;
+}
+
+/* --- Media Queries para Responsividad --- */
+@media (max-width: 900px) {
+    .contenedor-formulario {
+        flex-direction: column; /* Apila la imagen y el formulario en pantallas más pequeñas */
+        width: 95%; /* Ocupa más ancho en pantallas pequeñas */
+        max-width: 600px; /* Reduce el ancho máximo */
+        min-height: unset; /* Permite que la altura se ajuste al contenido */
+    }
+
+    .imagen-formulario {
+        width: 100%;
+        height: 250px; /* Altura fija para la imagen en móvil */
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        padding-left: 0;
+    }
+
+    .imagen-formulario img {
+        max-height: 90%; /* Ajusta la altura de la imagen */
+        width: auto;
+        object-fit: cover;
+    }
+
+    .bloque-formulario-general {
+        padding: 30px;
+    }
+
+    .bloque-formulario-general h1 {
+        font-size: 1.8em;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .form-row {
+        flex-direction: column; /* Apila los campos en filas en pantallas muy pequeñas */
+        gap: 15px;
+    }
+
+    .form-group {
+        min-width: unset; /* Elimina el ancho mínimo para permitir que se ajusten al 100% */
+    }
+}
+
+@media (max-width: 500px) {
+    .bloque-formulario-general {
+        padding: 20px;
+    }
+
+    .bloque-formulario-general h1 {
+        font-size: 1.5em;
+    }
+
+    input, textarea, select, button {
+        font-size: 0.95em;
+        padding: 10px 12px;
+    }
+
+    .boton-enviar {
+        padding: 12px 20px;
+        font-size: 1em;
+    }
+}
+</style>
+
+
+
+
+
+
+
+
 <section id="Comentarios" class="bloque-comentarios">
+  <div class="icono-titulo">
+      <img src="icono energy.svg" alt="" style="margin-left: 100px;">
+      <p class="titulo-beneficio">Beneficios</p>
+    </div>
+    <h3 class="subtitulo-beneficios" style="left:0vh; text-align: left; margin-left: 100px; font-size: 30pt; margin-bottom: 50px; color: #001E83;">Cambios que notará al tener un panel o terma solar</h3>
   <div class="comentarios-fila1">
     <div class="comentario-claro">
       <img src="perfil.svg" alt="" />
